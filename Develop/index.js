@@ -1,24 +1,59 @@
-// TODO: Include packages needed for this application
+const inquirer = require('inquirer');
+const fs = require('fs');
 
-// TODO: Create an array of questions for user input
-// I will console log each question before the user inputs data
-// then I will add the inputted data to the arguments in the readme generator
-const questions = [
-    'What is the title of your project?',
-    'Enter a description of your project:',
-    'Enter any installation instructions for new users:',
-    'Enter any usage information:',
-    'Enter any guidelines for contributors:',
-    'Enter any test instruction:',
-    'What is your GitHub username?',
-    'What is your email address?',
-];
+const readmePrompts = () => {
+  return inquirer.prompt([
+    {
+      type: 'input',
+      name: 'projTitle',
+      message: 'Enter the title of your project:',
+    },
+    {
+      type: 'input',
+      name: 'projDesc',
+      message: 'Enter a description of your project:',
+    },
+    {
+      type: 'input',
+      name: 'install',
+      message: 'Enter any installation instructions for new users:',
+    },
+    {
+      type: 'input',
+      name: 'usageInfo',
+      message: 'Enter any usage information:',
+    },
+    {
+      type: 'input',
+      name: 'contribGuide',
+      message: 'Enter any guidelines for contributors:',
+    },
+    {
+        type: 'input',
+        name: 'testInstr',
+        message: 'Enter any test instruction:',
+      },
+    {
+      type: 'input',
+      name: 'github',
+      message: 'Enter your GitHub Username',
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Enter your email:',
+      },
+  ]);
+};
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+const readmeGenerator = ({ projTitle, projDesc, install, usageInfo, contribGuide, testInstr, github, email }) =>
+  `${projTitle}, ${projDesc}, ${install}, ${usageInfo}, ${contribGuide}, ${testInstr}, ${github}, ${email}`;
 
-// TODO: Create a function to initialize app
-function init() {}
+const start = () => {
+  readmePrompts()
+    .then((answers) => fs.writeFileSync('readme.md', readmeGenerator(answers)))
+    .then(() => console.log('Check it out, you just generated a readme.md!'))
+    .catch((err) => console.error(err));
+};
 
-// Function call to initialize app
-init();
+start();
