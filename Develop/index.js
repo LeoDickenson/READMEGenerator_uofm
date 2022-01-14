@@ -43,10 +43,15 @@ const readmePrompts = () => {
         name: 'email',
         message: 'Enter your email:',
       },
+      {
+        type: 'input',
+        name: 'license',
+        message: 'please enter the type of license you are using for your application: ',
+      },
   ]);
 };
 
-const readmeGenerator = ({ projTitle, projDesc, install, usageInfo, contribGuide, testInstr, github, email }) =>
+const readmeGenerator = ({ projTitle, projDesc, install, usageInfo, contribGuide, testInstr, github, email, license }) =>
   `# ${projTitle}
    ## Description
    ${projDesc}
