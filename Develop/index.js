@@ -47,7 +47,31 @@ const readmePrompts = () => {
 };
 
 const readmeGenerator = ({ projTitle, projDesc, install, usageInfo, contribGuide, testInstr, github, email }) =>
-  `${projTitle}, ${projDesc}, ${install}, ${usageInfo}, ${contribGuide}, ${testInstr}, ${github}, ${email}`;
+  `# ${projTitle}
+   ## Description
+   ${projDesc}
+   # Table of contents
+1. [Installation Instructions](#installation)
+2. [Usage Instructions](#usage)
+3. [Contribution Guidelines](#contribution)
+4. [Testing Information](#testing)
+5. [Questions/Contact Info](#questions)
+6. [Licensing](#license)
+
+   ### <a name="installation"></a> Installation Instructions
+    ${install}
+   ### <a name="usage"></a> Usage Instructions
+    ${usageInfo} 
+   ### <a name="contribution"></a> Contribution Guidelines
+    ${contribGuide} 
+   ### <a name="testing"></a> Testing Information
+    ${testInstr} 
+   ### <a name="questions"></a> Questions/Contact Info
+    <strong>GitHub:</strong> ${github}
+    <br></br>
+    <strong>Email:</strong> ${email}
+   ### License
+    ${license}`
 
 const start = () => {
   readmePrompts()
